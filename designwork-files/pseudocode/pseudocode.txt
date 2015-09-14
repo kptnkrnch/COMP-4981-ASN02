@@ -1,0 +1,40 @@
+function client()
+	read in message queue id
+	open message queue
+	read in priority level
+	read in file name
+	send filename, priority level, and client id to the server using the message queue
+	
+	While there is data to read from the server
+		read data into buffer
+		print read to screen
+	end while
+end function
+
+function server()
+	read in message queue id
+	open message queue
+	
+	Enter infinite while loop
+		try and read data from the client
+		if successful read
+			create child handler process for the new client
+		end if
+	End infinite while loop
+end function
+
+function client-handler(clientData)
+	Set priority using priority level in ClientData
+	open file using filename in clientData
+	
+	while not end of file
+		for i = 0 to buffer size
+			read character from file into sendbuffer
+		end for
+		
+		send buffer to client via message queue
+		
+	end while
+	
+end function
+	
